@@ -114,7 +114,7 @@ main{
     margin: 20px auto;
     transition: 0.3s ease;
     overflow: hidden; /*Esconde oq tiver além desse tamano*/
-    
+    background-position: center center;
     
 }
 .livro-padrao.livro-padrao:hover{
@@ -149,73 +149,107 @@ main{
     display: none;
 }
 
-        #sombra{
-position: fixed;
-top: 0;
-right: 0;
-bottom: 0;
-left: 0;
-              min-height: 100dvh;
-            width: 100vw;
-            background-image: -moz-linear-gradient(to right, #000000dc,#000000d3,#000000cc,#000000d3, #000000dc);
-           /* z-index: 10;
-           display: flex; */
-            background-size: cover;
-        }
-        .menu-geral{
-            width: 85%;
-            max-height: fit-content;
-            height: calc(85% * 3 / 2);
-            background-color: #cccccc;
-            margin: auto;
-            padding-left: 20px;
-            font-family: sans-serif;
-        }
-        .fechar{
-            text-align: end;
-        }
-        .botao-fechar{
-            color: red;
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif , 'Courier New', Courier, monospace;
-            font-size: 25px;
-            font-weight: 700;    
-            cursor: pointer;
-            border: none;
-            background-color: transparent;
-            padding-right: 2.5px;
-            border-radius: 50%;
-        }
-        .menu-geral-titulo{
-            text-align: center;
-            font-size: 30px;
-            color: #747164 ;
-            padding-bottom: 10px;
-        }
-        #form-paginas{
-            width: 20%;
+#sombra{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    min-height: 100dvh;
+    width: 100vw;
+    background-image: -moz-linear-gradient(to right, #000000dc,#000000d3,#000000cc,#000000d3, #000000dc);
+    /* z-index: 10;
+    display: flex; */
+    background-size: cover;
+}
+.menu-geral{
+    width: 85%;
+    max-height: fit-content;
+    height: calc(85% * 3 / 2);
+    background-color: #cccccc;
+    margin: auto;
+    padding-left: 20px;
+    font-family: sans-serif;
+}
+.fechar{
+    text-align: end;
+}
+.botao-fechar{
+    color: red;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif , 'Courier New', Courier, monospace;
+    font-size: 25px;
+    font-weight: 700;    
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    padding-right: 2.5px;
+    border-radius: 50%;
+}
+.menu-geral-titulo{
+    text-align: center;
+    font-size: 30px;
+    color: #747164 ;
+    padding-bottom: 10px;
+}
+#form-paginas{
+    width: 20%;
 
-        }
-        #form-sinopse{
-            width: 90%;
-            padding-bottom: 5.0em;
+}
+#form-sinopse{
+    width: 90%;
+    padding-bottom: 5.0em;
 
-        }
-        .menu-geral input {
-            min-width: 20%;
-        }
-        .menu-geral label {
-            line-height: 2.2em;
+}
+.menu-geral input {
+    min-width: 20%;
+}
+.menu-geral label {
+    line-height: 2.2em;
 
-        }
-        .menu-geral ::placeholder{
-             color: rgba(212, 212, 212, 0.856);
-    font-family: monospace,'Courier New', Courier;
-        }
-        button{
-            padding: 2.5px;
-        }
-        input[type="number"]{
-            min-width: 15%;
-            text-align: center;
-            
-        }
+}
+.menu-geral ::placeholder{
+        color: rgba(212, 212, 212, 0.856);
+font-family: monospace,'Courier New', Courier;
+}
+button{
+    padding: 2.5px;
+}
+input[type="number"]{
+    min-width: 15%;
+    text-align: center;
+    
+}
+
+
+@media only screen and (min-width: 728px){
+    main{
+        min-width: 500px;
+        width: 50%;
+        margin: auto;
+    }
+    
+
+    .box-1{
+        border-radius: 2%;
+    }
+    .box-1-1{
+        gap: auto;
+    }
+    .box1-1 button{
+        width: 12.5% ;
+    }
+    .livro-padrao{
+        border-radius: 10px;
+        height: 40vw;
+        width: 65%;
+    }
+    .livro-titulo{
+        border-radius: 2.5px 2.5px 0px 0px;
+    }
+
+    .menu-geral{
+        width: 40%;
+        height: 80%;
+    }
+    
+}
