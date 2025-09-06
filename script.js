@@ -1,5 +1,9 @@
+
+
+// ------- Classe Livro -------
 class Livros {
     constructor(titulo, autor, capa, paginas, sinopse, nota) {
+        //   Inicializa um novo objeto com as informações do livro
         this.titulo = titulo
         this.autor = autor
         this.capa = capa
@@ -10,9 +14,44 @@ class Livros {
     }
 }
 
+// ------- VARIÁVEIS NECESSARIAS -------
+
+const livrosLista = [] // array kakkaa
+const acresclivros = document.getElementById(`acreslivros`)
+const blockaddbooks = document.getElementById(`blockaddbooks`)
 const novapagina = document.getElementById(`novapagina`)
 
+
+// -------- Barrar HTML EXTERNO --------------
+
+function BarHTMLExterno(contAtual) {
+
+    const blockCarac = [
+        { Carac: '<', substituto: '&lt;'  },
+        { Carac: '>', substituto: '&gt;'  },
+        { Carac: '&', substituto: '&amp;'  },
+        { Carac: '"', substituto: '&quot;'  },
+        { Carac: `'`, substituto: '&apos;'  },
+        { Carac: '`', substituto: '&#x60;'  },
+    ]
+
+    var contFinal = ''
+    // Percorre cada letra da string e substitui caracteres especiais
+    for (let i = 0; i < contAtual.length; i++) {
+        let c = contAtual[i] // Caractere atual
+        for (let n = 0; n < blockCarac.length; n++) {
+            c = c == blockCarac[n].Carac ? blockCarac[n].substituto : c;
+        }
+        contFinal = contFinal + c // Acumula no resultado final
+    }   
+    
+    return contFinal;
+} 
+
+
+
 function AbrirAdicionar() {
+    // // Cria dinamicamente o formulário para adicionar um novo livro no DOM
     novapagina.innerHTML += `
             <div id="sombra">
         <div class="menu-geral">
@@ -43,20 +82,18 @@ function AbrirAdicionar() {
         </div>
     </div>
     `
-    document.getElementById(`sombra`).style.display = "flex";
-    document.getElementById(`sombra`).style.zIndex = "10";
+    document.getElementById(`sombra`).style.display = "flex"; // ocupa toda a tela
+    document.getElementById(`sombra`).style.zIndex = "10"; // Sombra fica acima do conteúdo normal
     
-    document.querySelector(`.menu-geral`).style.display =  "block"
+    document.querySelector(`.menu-geral`).style.display =  "block" // dá pra usar 
 
 }
 
-const livrosLista = [] // array kakkaa
-const acresclivros = document.getElementById(`acreslivros`)
-const blockaddbooks = document.getElementById(`blockaddbooks`)
-
 
 function AddLivroNaLista() {
-    for (let i = 0; i < livrosLista.length; i++) {
+    // PARA MELHORAR: 
+    // O código dos livros tem sido reescrito continuamente, gastando processamento desnecessário. Será necessário acrescentar individualmente.
+    for (let i = 0; i < livrosLista.length; i++) { // índice da lista de livros
         acresclivros.innerHTML += `
     <div class="livro-padrao" id="id${i}">
                     <div class="livro-titulo">
@@ -65,8 +102,12 @@ function AddLivroNaLista() {
                 </div>
     
     `
-        var idatual = document.getElementById(`id${i}`)
-        idatual.style.backgroundImage = `url(${livrosLista[i].capa})`
+        var titlivros = document.querySelector(`p.livro-titulo-texto`) // Pega a tag do título
+       // titlivros.innerText = ``
+        var idatual = document.getElementById(`id${i}`) // transforma o id atual em uma variável para ser usada para manipular o livro pelo id
+
+        // Manipulações pelo id
+        idatual.style.backgroundImage = `url(${livrosLista[i].capa})` 
         idatual.style.backgroundSize = "cover";
         idatual.style.backgroundPosition = "center";
     }
@@ -75,36 +116,55 @@ function AddLivroNaLista() {
 function AdicionarLivro(titulo, autor, capa, paginas, sinopse, nota) {
     const novoLivro = new Livros(titulo, autor, capa, paginas, sinopse, nota)
     livrosLista.push(novoLivro)
- }
+    
+    //Cria um novo objeto da classe Livros com os dados fornecidos e adiciona esse objeto à lista de livros.
+}
 
 function AddBooks() {
-    var titulo = document.getElementById(`form-titulo`).value
-    var autor = document.getElementById(`form-autor`).value
-    var capa = document.getElementById(`form-capa`).value
-    var paginas = document.getElementById(`form-paginas`).value
-    var sinopse = document.getElementById(`form-sinopse`).value
-    var nota = document.getElementById(`form-nota`).value
+ 
+   // Pega os valores dos inputs
+var titulo = document.getElementById('form-titulo').value;
+var autor = document.getElementById('form-autor').value;
+var capa = document.getElementById('form-capa').value;
+var paginas = document.getElementById('form-paginas').value;
+var sinopse = document.getElementById('form-sinopse').value;
+var nota = document.getElementById('form-nota').value;
 
+// Aplica a função BarHTMLExterno depois
+titulo = BarHTMLExterno(titulo);
+autor = BarHTMLExterno(autor);
+capa = BarHTMLExterno(capa);
+sinopse = BarHTMLExterno(sinopse);
+
+
+    // flag por padrão é false
     flagLivroIgual = false
 
-    for (const i of livrosLista) {
+
+    // Verificar se há livro com mesmo título e autor
+    for (const i of livrosLista){
         if (i.autor.toLowerCase() === autor.toLowerCase() && i.titulo.toLowerCase() === titulo.toLowerCase()) { 
             flagLivroIgual = true
             break
         }
     }
+
+    // Verificar se REALMENTE Digitou um nome pro titulo
     if (titulo == "") {
         alert(`Você precisa digitar um NOME no título do seu livro.`)
         
         
-    } else if (nota < 0 || nota > 10) {
+    } // Verificar se a nota está válida
+    else if (nota < 0 || nota > 10) {
         window.alert(`Digite uma nota VÁLIDA! \n Ela precisa estar entre 0 e 10.`)
         
-    } else if (flagLivroIgual != true) {
+    } // Verificar se não já existe um livro com esse nome e autor 
+    else if (flagLivroIgual != true) { // no caso se Se não tiver a flag True de livro igual, adiciona o livro
         AdicionarLivro(titulo, autor, capa, paginas, sinopse, nota)
         console.log(livrosLista)
         AddLivroNaLista()
-    } else {
+    } // senão vai bloquear a adição
+    else {
         var blockaddbooks = document.getElementById(`blockaddbooks`)
         alert( ` Não é possível adicionar um livro com mesmo nome e mesmo autor!`)
     }
