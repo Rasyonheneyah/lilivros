@@ -52,7 +52,7 @@ function BarHTMLExterno(contAtual) {
 
 function AbrirAdicionar() {
     // // Cria dinamicamente o formulário para adicionar um novo livro no DOM
-    novapagina.innerHTML += `
+    novapagina.innerHTML = `
             <div id="sombra">
         <div class="menu-geral">
             <div class="fechar">
@@ -163,6 +163,7 @@ sinopse = BarHTMLExterno(sinopse);
         AdicionarLivro(titulo, autor, capa, paginas, sinopse, nota)
         console.log(livrosLista)
         AddLivroNaLista()
+        fecharmenu()
     } // senão vai bloquear a adição
     else {
         var blockaddbooks = document.getElementById(`blockaddbooks`)
