@@ -77,7 +77,7 @@ function AbrirAdicionar() {
             <label for="form-nota">Nota do Livro:</label>
             <input type="number" min="0" max="10" id="form-nota" name="form-nota" placeholder="10" >
             <br>
-            <button name="AddLivroslista" id="AddLivroslista" onclick="AddBooks()">Adicionar Livro</button>
+            <button name="AddLivroslista" id="AddLivroslista" onclick="ValidarLivro()">Adicionar Livro</button>
             <div id="blockaddbooks"></div>
         </div>
     </div>
@@ -97,7 +97,7 @@ function AddLivroNaLista() {
         acresclivros.innerHTML += `
     <div class="livro-padrao" id="id${i}">
                     <div class="livro-titulo">
-                        <p class="livro-titulo-texto">${livrosLista[i].titulo}</p>
+                        <p class="livro-titulo-texto">${livrosLista[i].titulo}</p> 
                     </div>
                 </div>
     
@@ -120,7 +120,7 @@ function AdicionarLivro(titulo, autor, capa, paginas, sinopse, nota) {
     //Cria um novo objeto da classe Livros com os dados fornecidos e adiciona esse objeto à lista de livros.
 }
 
-function AddBooks() {
+function ValidarLivro() {
  
    // Pega os valores dos inputs
 var titulo = document.getElementById('form-titulo').value;

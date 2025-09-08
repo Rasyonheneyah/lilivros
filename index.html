@@ -13,7 +13,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&" />
+    <!--
+    SUGESTÕES DE MELHORA:
+    - AddLivroNaLista() Fica iterando os livros que já foram colocados repetitidamente desnecessariamente. É necessário que a adição seja individual.
 
+    Função de "Já li o Livro" "Não li ainda" "Estou lendo", podendo colocar a página atual
+    
+    
+    -->
 </head>
 <body>
     <header>
@@ -46,7 +53,7 @@
             <label for="form-nota">Nota do Livro:</label>
             <input type="number" min="0" max="10" id="form-nota" name="form-nota" placeholder="10"  >
             <br>
-            <button name="AddLivroslista" id="AddLivroslista" onclick="AddBooks()">Adicionar Livro</button>
+            <button name="AddLivroslista" id="AddLivroslista" onclick="ValidarLivro()">Adicionar Livro</button>
             <div id="blockaddbooks"></div>
         </div>
     </div>
