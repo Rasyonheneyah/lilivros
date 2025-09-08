@@ -98,7 +98,7 @@ function AbrirAdicionar() {
 function AddLivroNaLista() {
     // PARA MELHORAR: 
     // O código dos livros tem sido reescrito continuamente, gastando processamento desnecessário. Será necessário acrescentar individualmente.
-    for (let i = 0; i < livrosLista.length; i++) { // índice da lista de livros
+    /*for (let i = 0; i < livrosLista.length; i++) { // índice da lista de livros
         acresclivros.innerHTML += `
     <div class="livro-padrao" id="id${livrosLista[i].id}">
                     <div class="livro-titulo">
@@ -106,16 +106,28 @@ function AddLivroNaLista() {
                     </div>
                 </div>
     
+    
+    Código Anterior ACIMA
+    Iterava toda a lista repepetidamente, solucionado usando o .length -1 na lista, porque dessa forma o elemento a ser adicionado sempre será o último da lista.
+    `*/
+
+     acresclivros.innerHTML += `
+    <div class="livro-padrao" id="id${livrosLista[livrosLista.length - 1].id}">
+                    <div class="livro-titulo">
+                        <p class="livro-titulo-texto">${livrosLista[livrosLista.length - 1].titulo}</p> 
+                    </div>
+                </div>
     `
+        
         var titlivros = document.querySelector(`p.livro-titulo-texto`) // Pega a tag do título
        // titlivros.innerText = ``
-        var idatual = document.getElementById(`id${livrosLista[i].id}`) // transforma o id atual em uma variável para ser usada para manipular o livro pelo id
+        var idatual = document.getElementById(`id${livrosLista[livrosLista.length - 1].id}`) // transforma o id atual em uma variável para ser usada para manipular o livro pelo id
 
         // Manipulações pelo id
-        idatual.style.backgroundImage = `url(${livrosLista[i].capa})` 
+        idatual.style.backgroundImage = `url(${livrosLista[livrosLista.length - 1].capa})` 
         idatual.style.backgroundSize = "cover";
         idatual.style.backgroundPosition = "center";
-    }
+    /*}*/
 }
 
 function AdicionarLivro(titulo, autor, capa, paginas, sinopse, nota) {
@@ -181,7 +193,18 @@ function fecharmenu() {
     document.getElementById(`sombra`).style.display = "none";
     
 }
-addEventListener
-function barraDePesquisa() {
+/*
+bpgeral.addEventListener('input', () => {
+    let bpinput = bpgeral.value
+    for (let i of livrosLista) {
+        let livroBP = document.getElementById(`id${i.id}`)
+        if  (bpinput.toLowerCase ||  i.titulo.toLowerCase || i.autor.toLowerCase || bpinput == '') {
+            livroBP.style.display = 'flex'
+        } else {
+            livroBP.style.display = 'none'
+        }
+    }
+});
+
     
-}
+*/

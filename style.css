@@ -116,6 +116,7 @@ main{
     overflow: hidden; /*Esconde oq tiver além desse tamano*/
     background-position: center center;
     
+    
 }
 .livro-padrao.livro-padrao:hover{
     cursor: pointer;
