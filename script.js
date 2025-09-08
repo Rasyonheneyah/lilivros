@@ -2,7 +2,7 @@
 
 // ------- Classe Livro -------
 class Livros {
-    constructor(titulo, autor, capa, paginas, sinopse, nota) {
+    constructor(titulo, autor, capa, paginas, sinopse, nota, id) {
         //   Inicializa um novo objeto com as informações do livro
         this.titulo = titulo
         this.autor = autor
@@ -10,7 +10,12 @@ class Livros {
         this.paginas = paginas
         this.sinopse = sinopse
         this.nota = nota
+        this.id = crypto.randomUUID().slice(0, 8) 
+        // fatia o código pra apenas 8 caracteres
         
+        while (livrosLista.some(livro => livro.id === this.id)) {
+            this.id = crypto.randomUUID().slice(0, 8)
+        }
     }
 }
 
@@ -20,7 +25,7 @@ const livrosLista = [] // array kakkaa
 const acresclivros = document.getElementById(`acreslivros`)
 const blockaddbooks = document.getElementById(`blockaddbooks`)
 const novapagina = document.getElementById(`novapagina`)
-
+const bpgeral = document.getElementById(`bp-geral`)
 
 // -------- Barrar HTML EXTERNO --------------
 
@@ -95,7 +100,7 @@ function AddLivroNaLista() {
     // O código dos livros tem sido reescrito continuamente, gastando processamento desnecessário. Será necessário acrescentar individualmente.
     for (let i = 0; i < livrosLista.length; i++) { // índice da lista de livros
         acresclivros.innerHTML += `
-    <div class="livro-padrao" id="id${i}">
+    <div class="livro-padrao" id="id${livrosLista[i].id}">
                     <div class="livro-titulo">
                         <p class="livro-titulo-texto">${livrosLista[i].titulo}</p> 
                     </div>
@@ -104,7 +109,7 @@ function AddLivroNaLista() {
     `
         var titlivros = document.querySelector(`p.livro-titulo-texto`) // Pega a tag do título
        // titlivros.innerText = ``
-        var idatual = document.getElementById(`id${i}`) // transforma o id atual em uma variável para ser usada para manipular o livro pelo id
+        var idatual = document.getElementById(`id${livrosLista[i].id}`) // transforma o id atual em uma variável para ser usada para manipular o livro pelo id
 
         // Manipulações pelo id
         idatual.style.backgroundImage = `url(${livrosLista[i].capa})` 
@@ -174,5 +179,9 @@ sinopse = BarHTMLExterno(sinopse);
     
 function fecharmenu() {
     document.getElementById(`sombra`).style.display = "none";
+    
+}
+addEventListener
+function barraDePesquisa() {
     
 }
