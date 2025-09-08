@@ -57,36 +57,7 @@ function BarHTMLExterno(contAtual) {
 
 function AbrirAdicionar() {
     // // Cria dinamicamente o formulário para adicionar um novo livro no DOM
-    novapagina.innerHTML = `
-            <div id="sombra">
-        <div class="menu-geral">
-            <div class="fechar">
-                <button onclick="fecharmenu()" class="botao-fechar">x</button>
-                </div>
-            <p class="menu-geral-titulo">Novo Livro</p>
-            <label for="form-titulo">Título do Livro:</label>
-            <input type="text" id="form-titulo" name="form-titulo" placeholder="1984">
-            <br>
-            <label for="form-autor">Nome do Autor:</label>
-            <input type="text" id="form-autor" name="form-autor" placeholder="George Orwell">
-            <br>
-            <label for="form-capa">Link da Capa do Livro:</label>
-            <input type="url" id="form-capa" name="form-capa" placeholder="https://capa-1984-george-orwell.png">
-            <br>
-            <label for="form-paginas">Número de Páginas:</label>
-            <input type="number" id="form-paginas" name="form-paginas">
-            <br>
-            <label for="form-sinopse">Sinopse do Livro:</label>
-            <textarea rows="4" cols="50" id="form-sinopse" name="form-sinopse" placeholder="1984 é um famoso romance inglês escrito pelo autor modernista George Orwell. Publicado pela primeira vez em 1949, ele conta a história de Winston Smith, um cidadão inserido em um contexto de repressão. Ele vive na Inglaterra de 1984, chamada de Oceânia. Nesse regime totalitarista, todos são vigiados pelo Grande Irmão."></textarea>
-            <br>
-            <label for="form-nota">Nota do Livro:</label>
-            <input type="number" min="0" max="10" id="form-nota" name="form-nota" placeholder="10" >
-            <br>
-            <button name="AddLivroslista" id="AddLivroslista" onclick="ValidarLivro()">Adicionar Livro</button>
-            <div id="blockaddbooks"></div>
-        </div>
-    </div>
-    `
+  
     document.getElementById(`sombra`).style.display = "flex"; // ocupa toda a tela
     document.getElementById(`sombra`).style.zIndex = "10"; // Sombra fica acima do conteúdo normal
     
@@ -125,8 +96,9 @@ function AddLivroNaLista() {
 
         // Manipulações pelo id
         idatual.style.backgroundImage = `url(${livrosLista[livrosLista.length - 1].capa})` 
-        idatual.style.backgroundSize = "cover";
-        idatual.style.backgroundPosition = "center";
+        idatual.style.backgroundSize = "contain";
+    idatual.style.backgroundPosition = "center";
+    idatual.style.backgroundRepeat = 'no-repeat'
     /*}*/
 }
 
