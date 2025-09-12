@@ -186,6 +186,12 @@ main{
     padding-right: 2.5px;
     border-radius: 50%;
 }
+.botao-fechar:hover{
+    color: rgb(209, 0, 0);
+}
+.botao-fechar:active{
+    color: rgb(250, 104, 104);
+}
 .menu-geral-titulo{
     text-align: center;
     font-size: 30px;
