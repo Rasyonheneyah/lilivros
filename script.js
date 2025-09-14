@@ -180,3 +180,12 @@ bpgeral.addEventListener('input', () => {
 
     
 */
+
+function modoExcluir() { 
+    console.log('MODO EXCLUIR ATIVADO!')
+    var livrosNaLista = window.document.querySelectorAll(`div.livro-padrao`)
+    livrosNaLista.addEventListener('mouseenter', () => {
+        livrosNaLista.style.backgroundColor = 'black'
+        console.log('Tamanho alterado1')
+    })
+}
